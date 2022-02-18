@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>你还在用分页？试试 MyBatis 流式查询，真心强大！ | TIm&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/blog/favicon.ico">
+    <link rel="manifest" href="/blog/img/tim.jpg">
+    <link rel="apple-touch-icon" href="/blog/img/tim.jpg">
+    <meta name="description" content="蒂姆的个人博客">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="pragma" cotent="no-cache,must-revalidate">
+    <meta http-quiv="expires" cotent="0">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.1275376d.css" as="style"><link rel="preload" href="/blog/assets/js/app.ee1ac8a5.js" as="script"><link rel="preload" href="/blog/assets/js/3.95ba7ff8.js" as="script"><link rel="preload" href="/blog/assets/js/1.4e5d9018.js" as="script"><link rel="preload" href="/blog/assets/js/16.32ffd37d.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.67a1d07b.js"><link rel="prefetch" href="/blog/assets/js/11.e1ee17ca.js"><link rel="prefetch" href="/blog/assets/js/12.c6db7e68.js"><link rel="prefetch" href="/blog/assets/js/13.3532a141.js"><link rel="prefetch" href="/blog/assets/js/14.b9b1200c.js"><link rel="prefetch" href="/blog/assets/js/15.be0b5962.js"><link rel="prefetch" href="/blog/assets/js/17.3e7842dd.js"><link rel="prefetch" href="/blog/assets/js/18.5d69f2bc.js"><link rel="prefetch" href="/blog/assets/js/19.5bcf830e.js"><link rel="prefetch" href="/blog/assets/js/4.25481aef.js"><link rel="prefetch" href="/blog/assets/js/5.4a05cd2c.js"><link rel="prefetch" href="/blog/assets/js/6.7b0e1376.js"><link rel="prefetch" href="/blog/assets/js/7.259f140a.js"><link rel="prefetch" href="/blog/assets/js/8.b358f5e0.js"><link rel="prefetch" href="/blog/assets/js/9.1d9c0971.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.1275376d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-130b300a><div data-v-130b300a><div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-130b300a data-v-130b300a><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>TIm's blog</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2>蒂姆的个人博客</p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <!---->
+          2022
+        </a></span></div></div> <div class="hide" data-v-130b300a><header class="navbar" data-v-130b300a><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><img src="/blog/img/tim.jpg" alt="TIm's blog" class="logo"> <span class="site-name">TIm's blog</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link"><i class="undefined"></i>
+  主页
+</a></div><div class="nav-item"><a href="/blog/java/" class="nav-link router-link-active"><i class="undefined"></i>
+  java基础
+</a></div><div class="nav-item"><a href="/blog/architecture/" class="nav-link"><i class="undefined"></i>
+  架构
+</a></div><div class="nav-item"><a href="/blog/database/" class="nav-link"><i class="undefined"></i>
+  数据库
+</a></div><div class="nav-item"><a href="/blog/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法
+</a></div><div class="nav-item"><a href="/blog/interview/" class="nav-link"><i class="undefined"></i>
+  面试
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      蒂姆的个人博客
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/dingmeikun" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/blog/gongzhonghao.html" class="nav-link"><i class="undefined"></i>
+  公众号
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-130b300a></div> <aside class="sidebar" data-v-130b300a><div class="personal-info-wrapper" data-v-39576ba9 data-v-130b300a><!----> <!----> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>8</h3> <h6 data-v-39576ba9>文章</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>0</h3> <h6 data-v-39576ba9>标签</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link"><i class="undefined"></i>
+  主页
+</a></div><div class="nav-item"><a href="/blog/java/" class="nav-link router-link-active"><i class="undefined"></i>
+  java基础
+</a></div><div class="nav-item"><a href="/blog/architecture/" class="nav-link"><i class="undefined"></i>
+  架构
+</a></div><div class="nav-item"><a href="/blog/database/" class="nav-link"><i class="undefined"></i>
+  数据库
+</a></div><div class="nav-item"><a href="/blog/algorithm/" class="nav-link"><i class="undefined"></i>
+  算法
+</a></div><div class="nav-item"><a href="/blog/interview/" class="nav-link"><i class="undefined"></i>
+  面试
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      蒂姆的个人博客
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/dingmeikun" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="/blog/gongzhonghao.html" class="nav-link"><i class="undefined"></i>
+  公众号
+</a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/blog/java/README" class="sidebar-heading clickable open"><span>基础学习</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/blog/java/MyBtis-Plus的流式查询.html" class="active sidebar-link">MyBtis-Plus的流式查询</a></li><li><a href="/blog/java/MySQL前缀索引选择性.html" class="sidebar-link">MySQL前缀索引选择性</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-130b300a><h3 class="title" data-v-25ba6db2 data-v-25ba6db2></h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><!---->
+            
+          <!---->
+          2022
+        </a></span></div></div> <div data-v-130b300a><main class="page"><section><div class="page-title"><h1 class="title">你还在用分页？试试 MyBatis 流式查询，真心强大！</h1> <div data-v-f875f3fc><!----> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h2 id="你还在用分页-试试-mybatis-流式查询-真心强大"><a href="#你还在用分页-试试-mybatis-流式查询-真心强大" class="header-anchor">#</a> 你还在用分页？试试 MyBatis 流式查询，真心强大！</h2> <p>[全栈进阶指南](javascript:void(0)😉 <em>昨天</em></p> <p><strong>基本概念</strong></p> <p>流式查询 指的是查询成功后不是返回一个集合而是返回一个迭代器，应用每次从迭代器取一条查询结果。流式查询的好处是能够降低内存使用。</p> <p>如果没有流式查询，我们想要从数据库取 1000 万条记录而又没有足够的内存时，就不得不分页查询，而分页查询效率取决于表设计，如果设计的不好，就无法执行高效的分页查询。因此流式查询是一个数据库访问框架必须具备的功能。</p> <p>流式查询的过程当中，数据库连接是保持打开状态的，因此要注意的是：执行一个流式查询后，数据库访问框架就不负责关闭数据库连接了，需要应用在取完数据后自己关闭。</p> <h1 id="mybatis-流式查询接口"><a href="#mybatis-流式查询接口" class="header-anchor">#</a> MyBatis 流式查询接口</h1> <p>MyBatis 提供了一个叫 <code>org.apache.ibatis.cursor.Cursor</code> 的接口类用于流式查询，这个接口继承了 <code>java.io.Closeable</code> 和 <code>java.lang.Iterable</code> 接口，由此可知：</p> <ol><li>Cursor 是可关闭的；</li> <li>Cursor 是可遍历的。</li></ol> <p>除此之外，Cursor 还提供了三个方法：</p> <ol><li><code>isOpen()</code>：用于在取数据之前判断 Cursor 对象是否是打开状态。只有当打开时 Cursor 才能取数据；</li> <li><code>isConsumed()</code>：用于判断查询结果是否全部取完。</li> <li><code>getCurrentIndex()</code>：返回已经获取了多少条数据</li></ol> <p>因为 Cursor 实现了迭代器接口，因此在实际使用当中，从 Cursor 取数据非常简单：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>cursor.forEach(rowObject -&gt; {...});
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h1 id="但构建-cursor-的过程不简单"><a href="#但构建-cursor-的过程不简单" class="header-anchor">#</a> 但构建 Cursor 的过程不简单</h1> <p>我们举个实际例子。下面是一个 Mapper 类：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@Mapper
+public interface FooMapper {
+    @Select(&quot;select * from foo limit #{limit}&quot;)
+    Cursor&lt;Foo&gt; scan(@Param(&quot;limit&quot;) int limit);
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>方法 scan() 是一个非常简单的查询。通过指定 Mapper 方法的返回值为 Cursor 类型，MyBatis 就知道这个查询方法一个流式查询。</p> <p>然后我们再写一个 SpringMVC Controller 方法来调用 Mapper（无关的代码已经省略）：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@GetMapping(&quot;foo/scan/0/{limit}&quot;)
+public void scanFoo0(@PathVariable(&quot;limit&quot;) int limit) throws Exception {
+    try (Cursor&lt;Foo&gt; cursor = fooMapper.scan(limit)) {  // 1
+        cursor.forEach(foo -&gt; {});                      // 2
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>上面的代码中，fooMapper 是 @Autowired 进来的。注释 1 处调用 scan 方法，得到 Cursor 对象并保证它能最后关闭；2 处则是从 cursor 中取数据。</p> <p>上面的代码看上去没什么问题，但是执行 scanFoo0() 时会报错：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>java.lang.IllegalStateException: A Cursor is already closed.
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>这是因为我们前面说了在取数据的过程中需要保持数据库连接，而 Mapper 方法通常在执行完后连接就关闭了，因此 Cusor 也一并关闭了。</p> <p>所以，解决这个问题的思路不复杂，保持数据库连接打开即可。我们至少有三种方案可选。</p> <h2 id="方案一-sqlsessionfactory"><a href="#方案一-sqlsessionfactory" class="header-anchor">#</a> 方案一：SqlSessionFactory</h2> <p>我们可以用 SqlSessionFactory 来手工打开数据库连接，将 Controller 方法修改如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@GetMapping(&quot;foo/scan/1/{limit}&quot;)
+public void scanFoo1(@PathVariable(&quot;limit&quot;) int limit) throws Exception {
+    try (
+        SqlSession sqlSession = sqlSessionFactory.openSession();  // 1
+        Cursor&lt;Foo&gt; cursor =
+              sqlSession.getMapper(FooMapper.class).scan(limit)   // 2
+    ) {
+        cursor.forEach(foo -&gt; { });
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>上面的代码中，1 处我们开启了一个 SqlSession （实际上也代表了一个数据库连接），并保证它最后能关闭；2 处我们使用 SqlSession 来获得 Mapper 对象。这样才能保证得到的 Cursor 对象是打开状态的。</p> <h2 id="方案二-transactiontemplate"><a href="#方案二-transactiontemplate" class="header-anchor">#</a> 方案二：TransactionTemplate</h2> <p>在 Spring 中，我们可以用 TransactionTemplate 来执行一个数据库事务，这个过程中数据库连接同样是打开的。代码如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@GetMapping(&quot;foo/scan/2/{limit}&quot;)
+public void scanFoo2(@PathVariable(&quot;limit&quot;) int limit) throws Exception {
+    TransactionTemplate transactionTemplate =
+            new TransactionTemplate(transactionManager);  // 1
+
+    transactionTemplate.execute(status -&gt; {               // 2
+        try (Cursor&lt;Foo&gt; cursor = fooMapper.scan(limit)) {
+            cursor.forEach(foo -&gt; { });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    });
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>上面的代码中，1 处我们创建了一个 TransactionTemplate 对象（此处 transactionManager 是怎么来的不用多解释，本文假设读者对 Spring 数据库事务的使用比较熟悉了），2 处执行数据库事务，而数据库事务的内容则是调用 Mapper 对象的流式查询。注意这里的 Mapper 对象无需通过 SqlSession 创建。</p> <h2 id="方案三-transactional-注解"><a href="#方案三-transactional-注解" class="header-anchor">#</a> 方案三：@Transactional 注解</h2> <p>这个本质上和方案二一样，代码如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@GetMapping(&quot;foo/scan/3/{limit}&quot;)
+@Transactional
+public void scanFoo3(@PathVariable(&quot;limit&quot;) int limit) throws Exception {
+    try (Cursor&lt;Foo&gt; cursor = fooMapper.scan(limit)) {
+        cursor.forEach(foo -&gt; { });
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>它仅仅是在原来方法上面加了个 <code>@Transactional</code> 注解。这个方案看上去最简洁，但请注意 Spring 框架当中注解使用的坑：只在外部调用时生效 。在当前类中调用这个方法，依旧会报错。</p> <p>以上是三种实现 MyBatis 流式查询的方法。</p></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/blog/java/MySQL前缀索引选择性.html">
+            MySQL前缀索引选择性
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-2" data-v-cb1513f6><a href="/blog/java/MyBtis-Plus%E7%9A%84%E6%B5%81%E5%BC%8F%E6%9F%A5%E8%AF%A2.html#你还在用分页-试试-mybatis-流式查询-真心强大" class="sidebar-link reco-side-你还在用分页-试试-mybatis-流式查询-真心强大" data-v-cb1513f6>你还在用分页？试试 MyBatis 流式查询，真心强大！</a></li><li class="level-2" data-v-cb1513f6><a href="/blog/java/MyBtis-Plus%E7%9A%84%E6%B5%81%E5%BC%8F%E6%9F%A5%E8%AF%A2.html#方案一-sqlsessionfactory" class="sidebar-link reco-side-方案一-sqlsessionfactory" data-v-cb1513f6>方案一：SqlSessionFactory</a></li><li class="level-2" data-v-cb1513f6><a href="/blog/java/MyBtis-Plus%E7%9A%84%E6%B5%81%E5%BC%8F%E6%9F%A5%E8%AF%A2.html#方案二-transactiontemplate" class="sidebar-link reco-side-方案二-transactiontemplate" data-v-cb1513f6>方案二：TransactionTemplate</a></li><li class="level-2" data-v-cb1513f6><a href="/blog/java/MyBtis-Plus%E7%9A%84%E6%B5%81%E5%BC%8F%E6%9F%A5%E8%AF%A2.html#方案三-transactional-注解" class="sidebar-link reco-side-方案三-transactional-注解" data-v-cb1513f6>方案三：@Transactional 注解</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/blog/assets/js/app.ee1ac8a5.js" defer></script><script src="/blog/assets/js/3.95ba7ff8.js" defer></script><script src="/blog/assets/js/1.4e5d9018.js" defer></script><script src="/blog/assets/js/16.32ffd37d.js" defer></script>
+  </body>
+</html>
